@@ -4,3 +4,5 @@ To install this package:
 if (!require("devtools", quietly = TRUE))
     install.packages("devtools")
 devtools::install_github("jackwgoodall/floreytemplate")
+
+You can then open a new R markdown document, select 'From Template' then select 'Florey Template' and you're good to go!
