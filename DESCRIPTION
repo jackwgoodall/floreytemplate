@@ -4,8 +4,7 @@ Title: An R Markdown Template for Sheffield University's Florey Institute
 Version: 0.1.0
 Author: Jack Goodall
 Maintainer: Jack Goodall <j.goodall@sheffield.ac.uk>
-Description: This is an Rmarkdown package for members of the Florey Institute (and anyone else for whom it would be helpful) 
-share early data with each other and with collaborators.  The tutorial linked to this can be found at https://jackwgoodall.github.io/florey-markdown/
+Description: This is an Rmarkdown package for members of the Florey Institute (and anyone else for whom it would be helpful) share early data with each other and with collaborators.  The tutorial linked to this can be found at https://jackwgoodall.github.io/florey-markdown/
 License: MIT License
 Encoding: UTF-8
 LazyData: true
