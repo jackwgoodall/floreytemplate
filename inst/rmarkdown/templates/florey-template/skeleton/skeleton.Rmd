@@ -22,7 +22,7 @@ editor_options:
 
 This is an R Markdown template for Sheffield's Florey Institute.  However I hope that some of it will be of wider use.
 
-There is a tutorial on how to use and adapt this template at ...
+There is a tutorial on how to use and adapt this template at https://jackwgoodall.github.io/floreytemplate/
 
 ```{r setup}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
