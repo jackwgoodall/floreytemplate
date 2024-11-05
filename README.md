@@ -1,7 +1,7 @@
 # Florey R Markdown Template and Tutorial
 
 This is an Rmarkdown package for members of Sheffield's Florey Institute (and anyone else for whom it would be helpful) share early data with each other and with collaborators.  
-The tutorial linked to this can be found at [jackwgoodall/florey-markdown](https://jackwgoodall.github.io/floreytemplate/)![image](https://github.com/user-attachments/assets/316f4386-1b1c-4ad9-89ad-ec53b1e07475)
+The tutorial linked to this can be found at [[jackwgoodall/florey-markdown](https://github.com/user-attachments/assets/316f4386-1b1c-4ad9-89ad-ec53b1e07475)](https://jackwgoodall.github.io/floreytemplate/)
 
 To install this package: 
 if (!require("devtools", quietly = TRUE))
