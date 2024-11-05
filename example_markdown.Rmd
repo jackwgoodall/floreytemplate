@@ -1,0 +1,398 @@
+---
+title: "Florey R Markdown Template Tutorial"
+author: "Jack Goodall"
+date: "Started 01-09-2024, rendered `r format(Sys.Date(), '%d-%m-%Y')`"
+output:
+  html_document:
+    css: setup/style.css
+    includes:
+      after_body: setup/footer.html
+    code_folding: hide
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    toc_depth: 4
+bibliography: references.bibtex
+csl: nature.csl
+link-citations: true
+editor_options:
+  chunk_output_type: console
+zotero: true
+---
+
+# Overview
+
+This is an example page from the tutorial on how to use Rmarkdown made for Sheffield's [Florey Institute](https://www.sheffield.ac.uk/florey-institute) (although everyone is of course welcome to use it). 
+
+The code used to make this page can be found on my GitHub [here](https://github.com/jackwgoodall/floreytemplate/blob/main/example_markdown.Rmd).  
+
+This html file is both a demonstration of what can be done and as well as being available to download for you to make your own markdown documents.
+
+If you are experienced already with markdown then the [installing the template](#install-the-template) will be all you need to get the Florey branding and general template. However the [custom CSS](#custom-css) section later on might be of interest, as this explains how to customise the page, including how to the logo, floating table of content and code folding.
+
+If you are new to markdown then I suggest following this document through in order.
+
+
+If you need more detail or want to understand how to use PDFs, word or Shiny I would highly recommend  [the R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/) 
+
+If you have any questions, suggetions for improvements or would like to edit the project please either [email j.goodall@sheffield.ac.uk](mailto:j.goodall@sheffield.ac.uk) or [open an issue](https://github.com/jackwgoodall/floreytemplate/issues) on the GitHub page. 
+
+In homage to the original markdown tutorial I have used the cars dataset @mcneil1977interactive.
+
+# Install the template 
+
+1. In the R console run:
+`if (!require("devtools", quietly = TRUE)) install.packages("devtools")`
+
+2. Then run:  
+`devtools::install_github("jackwgoodall/floreytemplate")`
+
+3. Open a new file and select R Markdown Document as the document type
+4. On the left of the window select 'From Template'
+5. Select 'Florey Template'
+6. This should give you a minimal markdown document
+7. Press the 'Knit' button at the top of the screen
+8. If all has gone to plan an html file with the Florey logo and some intro text should appear
+
+This might be all you need to get going, otherwise having the source code to cross reference as you read through the webpage should help you understand how it was all put together. This can be downloaded [here]
+
+# Anatomy of a Markdown 
+
+A markdown document is made up of:
+
+- The YAML heading
+- Formatted text
+- Code chunks 
+
+The **YAML heading** ('**Y**AML **A**in't **M**arkup **L**anguage' - recursive acroynms seem to be big in coding circles) tells R studio how to knit the document. The only essential thing here is the `output:` option.  I would strongly suggest html for almost all tasks (although both PDF and word have their uses). 
+However, there is much more that can be done with the YAML heading to make markdown more accessible, as you will see. <br>
+
+**Formatted text** is really what makes markdown so great for sharing your pre-publication work with colleagues and collaborators.  This lets you add a narrative around the data you want to present. 
+
+The options open to you are shown in the [headings](#headings) and [formatting](#formatting) sections. <br>
+
+**Code chunks** are sections of R code that are either just setting things up or are producing an output that we want to show.  Code within these chunks operates pretty much the same as it does within 'normal' R - but anything that would normally to the console appears after the chunk that created it.
+
+# Chunks
+
+### Insert a chunk 
+
+Code chunks need to be framed by the \```{r} at the start and \``` at the end. 
+This can either be done manually or with Code -> Insert Chunk.
+After the 'r' you can add a name for the chunk.  This makes it easier to find specific chunks later as these names will appear at the bottom left of the editor. 
+
+### Set the global options 
+
+You could choose how you want each chunk to behave one-by-one in the heading. 
+
+e.g. \```{r chunk one, echo = FALSE} would tell R that you don't want the code for this particular chunk to be shown.
+
+Much easier though is to set the global options with knitr::opts_chunk$set like this: 
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+
+Click the 'Show' button here to see the settings for this document ---->
+
+I have selected: 
+
+- `echo = TRUE`, meaning that all code will be shown.  However as I have enabled `code_folding: hide` in the YAML these will be hidden by default unless you click the show button.  I think this is a nice compromise as some collaborators will likely want to see you code, whilst  others will just want the content. 
+
+- `warnings = FALSE` to stop the warnings being printed.  You will need to pay attention to these when you're building the document as they won't come out in the knit now.
+
+- `message = FALSE` prevents messages that are generated by code from being shown.
+
+Other options are: 
+
+- `include = FALSE` would prevent both the code AND it's output from being shown. The code will still be run though. 
+
+- `eval = FALSE` stops the code being run at all (useful if you want to show the code but don't want it to do anything). 
+
+The setting in a code chunk will take precident over the global options. So, if you want all of the code chunks to be show apart from one you could set the global options to `echo = TRUE` and that chunk's options to `echo = FALSE`. 
+
+Another useful thing to get your head around if you will be making documents with large data processing is caching.  That is beyond the scope of this intro but a good intro can be found [here](https://bookdown.org/yihui/rmarkdown-cookbook/cache.html)
+
+### Packages
+
+You will need some packages.  If these are used for the knit they need to be explicitly loaded. 
+
+I have gone for the default approach of hard coding pacman to be installed and then using this to install everything else. 
+
+I think ggplot2, tidyverse and kable_extra (see why kableExtra [later](#tables)) are all pretty much essentials but you can change these to suit.
+
+
+```{r packages}
+if (!require("pacman", quietly = TRUE))
+    install.packages("pacman")
+pacman::p_load(ggplot2, tidyverse, kableExtra)
+```
+ 
+# Formatting
+
+You can easily create headings using increasing numbers of hashtags (#). The more hashtags the smaller the heading.
+
+I have set up the css file (this is [explained later](#custom-css) to give a bit of extra white space above and below the headings; these can be easily changed.
+
+The setup of this markdown is such that anything up to heading level 4 (####) will feature in the folding table of content. 
+
+Click on "Formatting" then "Headings" in the table of content to see what this looks like <br>
+<----------
+
+The heading of this section is heading 1 (one #)
+
+## Headings
+
+This is heading 2 (two ##)
+
+### Heading 3
+
+This is heading 3 (three ###)
+
+#### Heading 4
+
+This is heading 4 (four ####)
+
+##### Heading 5
+
+Heading 5 (five #####) will still create a heading - but this won't be referenced in the table of content.
+
+The depth of heading you want to be referenced can be easily changed in the YAML heading with `toc_depth:`
+
+
+## Text options
+
+| Input        | Output           | 
+| ------------- |:-------------:| 
+| \*\*Two asterix\*\*    | **makes text bold** | 
+| \*One asterix\*     | *italicises text*  |   
+| \*\*\*Three asterix\*\*\* | ***does both*** |
+| \`Single backticks\` | `formats as code` |
+| \~~Two tilde\~~ | ~~crosses out~~ |
+
+
+Links can be made by putting the text in square brackets, followed by the website in round brackets, with no space in between.
+
+`[Link](https://github.com/jackwgoodall/floreytemplate/)`
+
+Makes:
+
+[Link](https://github.com/jackwgoodall/floreytemplate/)
+
+Equations can be made by wrapping the equation in `$` for inline and `$$` for displayed equations: 
+
+
+$$
+\sum_{i = 1}^{n}{(this..is..an..equation)^2}
+$$
+A list of mathemetical notation can be found [here](https://rpruim.github.io/s341/S19/from-class/MathinRmd.html#:~:text=Math%20inside%20RMarkdown,10n%3D1n2)
+
+## Dividing lines
+
+A dividing line can be placed with three or more astrixes (***) like this:
+
+***
+
+Although a more convincing divide can be placed using some html code (done here to match the custom dividing lines I've put between sections in the css file). <br>
+
+`<hr style="border: 1px solid #450099; width: 100%; margin-top: 1em; margin-bottom: 1em;">` makes:
+
+<hr style="border: 1px solid #450099; width: 100%; margin-top: 1em; margin-bottom: 1em;">
+
+Better eh?
+
+## Spaces 
+
+Markdown doesn't really pay attention to spaces.  
+
+Adding two spaces to the end of a line generally starts a new line, but it you want to be more explict (or add multiple new lines) then inserting `<br>` will do this. 
+
+Adding `&nbsp;` will add whitespace. 
+
+## Tables
+
+Tables can be 'freehanded' (like I've done in the 'Text Options' section).
+
+However, more elegant tables can be quickly made by piping the table into ***kableExtra***. Like this:
+
+```{r}
+table(pressure$temperature[1:5], pressure$pressure[1:5]) %>%
+  kbl(caption = "Hover Table") %>%
+  kable_paper("hover", full_width = F)
+```
+
+There are lots of options that are well documented on their [CRAN page](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Table_Styles)
+
+
+# R code in formatted text
+
+Sometimes it can be useful to add data from R objects into the formatted text.  This allows statements to update if you change the data source.
+
+For instance I could find out that the median pressure from the cars dataset is 8.8 by checking this in the console.  But this number won't change if the cars dataset is updated.
+
+Code can be run inline starting a phrase with "r" inside back ticks eg: 
+
+The median pressure of the cars dataset is &#96;r median(pressure$pressure)&#96; gives: 
+ 
+"The median pressure of the cars dataset is `r median(pressure$pressure)`"
+
+If the values in the cars dataset were to change, this would update accordingly.
+
+This also works in the YAML header; I've used this to add the rendered date to the title. 
+
+# Tabsets {.tabset}
+
+One of the post powerful ways to make a data rich document more accessible is by using tabs.
+
+These are easily inserted with the `{.tabset}` feature.  This is added after a heading and then headings below that in the document that have a lower status will become tabs.  
+
+This ends when you add another heading with the higher level.
+
+## Standard 
+
+```{r pressure_1}
+plot <- pressure %>%
+  ggplot(aes(x = temperature, y = pressure)) + 
+  geom_point()
+
+plot
+```
+
+## Red dots
+```{r pressure_red}
+plot +  
+  geom_point(color = "red", # Adjusting colour names
+             size = 4)  # Adjusting size
+```
+
+## Blue trianges
+
+```{r pressure_blue}
+plot +  
+  geom_point(color = "#093daf", # Adjusting colour using hex colours 
+             size = 4,   # Adjusting size
+             shape = 17)  # Adjusting shape
+```
+
+# Plot size
+
+The plotsize can be specified with `fig.dim = c(x, y)` where x is the width and y is the height of the image. 
+
+```{r fig.dim = c(2, 3)}
+plot +  
+  geom_point(color = "#093daf", # Adjusting colour using hex colours 
+             size = 4,   # Adjusting size
+             shape = 17)  # Adjusting shape
+```
+
+<br>
+How much of the markdown space the plot occupies can be set with `out.width = "X%"` and `out.height="X%"`: 
+
+
+```{r out.width = "50%"}
+plot +  
+  geom_point(color = "#093daf", # Adjusting colour using hex colours 
+             size = 4,   # Adjusting size
+             shape = 17)  # Adjusting shape
+```
+
+# Add references
+
+## Style
+
+References can be added to a markdown document by making a bibtex file and then referencing this in the markdown document. The style can be changed using a custom .csl file (they can be downloaded from Zotero's website [here](https://www.zotero.org/styles)).  If you add this to the working directory and change the `csl:` section of the YAML this will update the referencing style of the inline citations and bibliography.  
+
+If you are using my template I have set this up as Nature's style.
+
+## Adding reference files 
+
+References that are saved to the BibTex file can be referenced in the text.  
+The easiest way to make a BibTex file is to use a reference manager such as Zotero - this can be done for single files (right click), multiple files (select the ones you want and right click) or the whole library (File -> Export Library).  There are also online tools that will make bibtex out of DOIs. 
+
+## Adding references in the text
+
+In line citations can be added using at @ sign followed by the name of the reference (this is mcneil1977interactive in our example).
+
+This will create a reference like this @mcneil1977interactive.
+
+As I have added `link-citations: true` into the YAML this will hyperlink to the relevant part of the bibliography.
+
+There are some [more advanced ways](https://libguides.bi.no/datalab/rmarkdown) to link Zotero and R studio, but unless you plan on writing whole dissertations this way I am not sure they are worth the faff.
+
+## Bibliography
+
+Adding "# References" at the end of the document will automatically render the references in your chosen format. 
+
+# Add crossreferences
+
+Different parts of document can be cross-referenced by adding some text in square brackets, followed by the heading name, all in lower case with no special characters and with hyphens instead of spaces
+
+[Like this link to the formatting section](#formatting)
+
+# Custom CSS and HTML
+
+This template has two extra twiddles. The first is a custom css file which sorts out some of the styling.  The second is an html footer.  
+
+## HTML footer
+The html footer is just there to add the lines breaks in.  There isn't a way (that I could think of) to add line breaks between sections that followed a rule in css.  The line breaks in this document are inserted when you go from one section to another section that has either the same heading level or a higher one.  It tries to break up the document but not to put lines between headings and their subheadings. 
+
+This does of course put line breaks between some lower order headings that are the same level but part of the same overall section.  I can't think of a way around this.  If you don't like it then remove `after_body: setup/footer.html` from the YAML and it will disappear.
+
+## CSS 
+
+CSS is how HTML formatting is controlled.  By referencing a custom CSS in the YAML we can add global options for the document styling. 
+
+If you open this file you can see that I have: 
+
+- Changed the font sizes
+- Added more white space around the headers
+- Changed the colour of the text and background of the table of contents
+- Changed the font size of the table of contents
+- Added a logo
+
+### Adding the logo
+
+To add the logo I've added this chunk into the CSS file: 
+
+`#TOC::before {` <br>
+  `content: "";` <br>
+  `display: block;` <br>
+  `height: 110px;` <br>
+  `background-image: url(link/to/image.png);` <br>
+  `background-size: contain;` <br>
+  `background-position: center center;` <br>
+  `background-repeat: no-repeat;` <br>
+  `background-color: #450099;` <br>
+`}` 
+
+This creates an empty block before the TOC, adds an image into it and then colours in the background the same as the logo.
+
+If you want to change the logo you can simply change the link in the `background-image: url(link/to/image.png);` to a file path of your choice. 
+
+The only downside of this is that you will always need to have this image in the same directory as your html file for it to show. 
+
+A workaround for this is to convert you file to base64 (like I have done).  This creates a text string that describes the picture which will be rendered into the html file. 
+
+### Making a base64 logo
+
+Load required library <br>
+`library(base64enc)`<br>
+
+Encode the image as a Base64 string <br>
+`img_path <- "setup/main-logo.png"` <br>
+`img_base64 <- base64enc::dataURI(file = img_path, mime = "image/png")` <br>
+
+Print or save the Base64 string <br>
+`cat(img_base64)` <br>
+
+Copy the string that this creates into the relevant part of the css file and you're away.
+
+You may want to change the highlights I have chosen for the table of content and dividing lines to match your logo.  [This website](https://imagecolorpicker.com/) lets you find the hex colour codes from an image you upload and might be helpful.
+
+# Conclusions
+
+I hope this markdown tutorial has been useful.  I would love to hear your feedback (good and bad!) either by email (j.goodall@sheffield.ac.uk) or by opening an issue on the [package page](https://github.com/jackwgoodall/floreytemplate/issues). 
+
+# References
