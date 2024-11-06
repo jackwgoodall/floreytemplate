@@ -1,18 +1,35 @@
 ---
-title: "Template Title"
+title: "STH lab med R Markdown Template Example"
 author: "Your Name"
-date: "The Date"
-output: output_format
+date: "Started --Add Date--, last rendered `r format(Sys.Date(), '%d-%m-%Y')`"
+output:
+  html_document:
+    css: setup/style.css
+    includes:
+      after_body: setup/footer.html
+    code_folding: hide
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+    toc_depth: 4
+bibliography: references.bibtex
+csl: nature.csl
+link-citations: true
+editor_options:
+  chunk_output_type: console
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+This is an R Markdown template for STH laboratory medicine.  However I hope that some of it will be of wider use.
+
+There is a tutorial on how to use and adapt this template at https://jackwgoodall.github.io/floreytemplate/ (this shows it for the florey template but all the content is the same).
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```
 
-## Adding an RMarkdown Template
-
-This file is what a user will see when they select your template. Make sure that you update the fields in the yaml header. In particular you will want to update the `output` field to whatever format your template requires.
-
-This is a good place to demonstrate special features that your template provides. Ideally it should knit out-of-the-box, or at least contain clear instructions as to what needs changing.
-
-Finally, be sure to remove this message!
+```{r packages}
+if (!require("pacman", quietly = TRUE))
+    install.packages("pacman")
+pacman::p_load(ggplot2, tidyverse, kableExtra)
+```
