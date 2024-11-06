@@ -1,7 +1,7 @@
 ---
 title: "Florey R Markdown Template Example"
 author: "Your Name"
-date: "Started --Add Date--, rendered `r format(Sys.Date(), '%d-%m-%Y')`"
+date: "Started --Add Date--, last rendered `r format(Sys.Date(), '%d-%m-%Y')`"
 output:
   html_document:
     css: setup/style.css
@@ -22,7 +22,7 @@ editor_options:
 
 This is an R Markdown template for Sheffield's Florey Institute.  However I hope that some of it will be of wider use.
 
-There is a tutorial on how to use and adapt this template at ...
+There is a tutorial on how to use and adapt this template at https://jackwgoodall.github.io/floreytemplate/
 
 ```{r setup}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
