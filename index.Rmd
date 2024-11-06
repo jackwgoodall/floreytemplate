@@ -25,7 +25,7 @@ zotero: true
 
 This is an example page from the tutorial on how to use Rmarkdown made for Sheffield's [Florey Institute](https://www.sheffield.ac.uk/florey-institute) (although everyone is of course welcome to use it). 
 
-The code used to make this page can be found on my GitHub [here](https://github.com/jackwgoodall/floreytemplate/blob/main/example_markdown.Rmd).  It might be useful to look at this in conjunction with this webpage to see how it has been put together.
+The code used to make this page can be found on my GitHub [here](https://github.com/jackwgoodall/floreytemplate/blob/main/index.Rmd).  It might be useful to look at this in conjunction with this webpage to see how it has been put together.
 
 This html file is a tutorial on how to use the template, a demonstration of how it looks and a more general guide to using markdown to present pre-publication research findings.
 
