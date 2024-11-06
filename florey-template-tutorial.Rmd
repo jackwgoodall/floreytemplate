@@ -1,20 +1,20 @@
 ---
 title: "Florey R Markdown Template Tutorial"
 author: "Jack Goodall"
-date: "Started 01-09-2024, rendered `r format(Sys.Date(), '%d-%m-%Y')`"
+date: "Started 01-09-2024, last rendered `r format(Sys.Date(), '%d-%m-%Y')`"
 output:
   html_document:
-    css: setup/style.css
+    css: inst/rmarkdown/templates/florey-template/skeleton/setup/style.css
     includes:
-      after_body: setup/footer.html
+      after_body: inst/rmarkdown/templates/florey-template/skeleton/setup/footer.html
     code_folding: hide
     toc: true
     toc_float:
       collapsed: true
       smooth_scroll: true
     toc_depth: 4
-bibliography: references.bibtex
-csl: nature.csl
+bibliography: inst/rmarkdown/templates/florey-template/skeleton/references.bibtex
+csl: inst/rmarkdown/templates/florey-template/skeleton/nature.csl
 link-citations: true
 editor_options:
   chunk_output_type: console
@@ -25,16 +25,16 @@ zotero: true
 
 This is an example page from the tutorial on how to use Rmarkdown made for Sheffield's [Florey Institute](https://www.sheffield.ac.uk/florey-institute) (although everyone is of course welcome to use it). 
 
-The code used to make this page can be found on my GitHub [here](https://github.com/jackwgoodall/floreytemplate/blob/main/example_markdown.Rmd).  
+The code used to make this page can be found on my GitHub [here](https://github.com/jackwgoodall/floreytemplate/blob/main/example_markdown.Rmd).  It might be useful to look at this in conjunction with this webpage to see how it has been put together.
 
-This html file is both a demonstration of what can be done and as well as being available to download for you to make your own markdown documents.
+This html file is a tutorial on how to use the template, a demonstration of how it looks and a more general guide to using markdown to present pre-publication research findings.
 
 If you are experienced already with markdown then the [installing the template](#install-the-template) will be all you need to get the Florey branding and general template. However the [custom CSS](#custom-css) section later on might be of interest, as this explains how to customise the page, including how to the logo, floating table of content and code folding.
 
 If you are new to markdown then I suggest following this document through in order.
 
 
-If you need more detail or want to understand how to use PDFs, word or Shiny I would highly recommend  [the R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/) 
+If you need more detail or want to understand how to use PDFs, word or Shiny I would highly recommend  [the R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/).
 
 If you have any questions, suggetions for improvements or would like to edit the project please either [email j.goodall@sheffield.ac.uk](mailto:j.goodall@sheffield.ac.uk) or [open an issue](https://github.com/jackwgoodall/floreytemplate/issues) on the GitHub page. 
 
@@ -55,7 +55,7 @@ In homage to the original markdown tutorial I have used the cars dataset @mcneil
 7. Press the 'Knit' button at the top of the screen
 8. If all has gone to plan an html file with the Florey logo and some intro text should appear
 
-This might be all you need to get going, otherwise having the source code to cross reference as you read through the webpage should help you understand how it was all put together. This can be downloaded [here]
+This might be all you need to get going, otherwise having the [source code](https://github.com/jackwgoodall/floreytemplate/blob/main/example_markdown.Rmd) to cross reference as you read through the webpage should help you understand how it was all put together. 
 
 # Anatomy of a Markdown 
 
@@ -134,7 +134,7 @@ pacman::p_load(ggplot2, tidyverse, kableExtra)
 
 You can easily create headings using increasing numbers of hashtags (#). The more hashtags the smaller the heading.
 
-I have set up the css file (this is [explained later](#custom-css) to give a bit of extra white space above and below the headings; these can be easily changed.
+I have set up the css file (this is [explained later](#custom-css-and-html) to give a bit of extra white space above and below the headings; these can be easily changed.
 
 The setup of this markdown is such that anything up to heading level 4 (####) will feature in the folding table of content. 
 
