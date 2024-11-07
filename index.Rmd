@@ -23,20 +23,21 @@ zotero: true
 
 # Overview
 
-This is an example page from the tutorial on how to use Rmarkdown made for Sheffield's [Florey Institute](https://www.sheffield.ac.uk/florey-institute) (although everyone is of course welcome to use it). 
+This page is a tutorial on how to use Rmarkdown made for Sheffield's [Florey Institute](https://www.sheffield.ac.uk/florey-institute) (although everyone is of course welcome to use and adapt it). 
 
-The code used to make this page can be found on my GitHub [here](https://github.com/jackwgoodall/floreytemplate/blob/main/index.Rmd).  It might be useful to look at this in conjunction with this webpage to see how it has been put together.
+The tutorial is aimed at people who are already familiar with R but are new to R markdown.  It aims to give those people both introduction to this powerful communication tool, and to give a flavour of how it might be used to communicate pre-publication research findings with colleague and collaborators.  
 
-This html file is a tutorial on how to use the template, a demonstration of how it looks and a more general guide to using markdown to present pre-publication research findings.
+This webpage was written with R Markdown using the Florey Template.  The code used to make it can be found on my GitHub [here](https://github.com/jackwgoodall/floreytemplate/blob/main/index.Rmd).  It might be useful to look at this in conjunction with this webpage to see how it has been put together, although this shouldn't be necessary to understand it.
 
-If you are experienced already with markdown then the [installing the template](#install-the-template) will be all you need to get the Florey branding and general template. However the [custom CSS](#custom-css) section later on might be of interest, as this explains how to customise the page, including how to the logo, floating table of content and code folding.
+If you are experienced already with markdown then the [installing the template](#install-the-template) will be all you need to get the Florey branding and general template. However the [custom CSS](#custom-css) section later on might be of interest, as this explains how to customise the page, including how to customise the logo and section breaks.
 
 If you are new to markdown then I suggest following this document through in order.
 
 
 If you need more detail or want to understand how to use PDFs, word or Shiny I would highly recommend  [the R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/).
 
-If you have any questions, suggetions for improvements or would like to edit the project please either [email j.goodall@sheffield.ac.uk](mailto:j.goodall@sheffield.ac.uk) or [open an issue](https://github.com/jackwgoodall/floreytemplate/issues) on the GitHub page. 
+
+If you have any questions, suggestions for improvements or would like to edit the project please either [email j.goodall@sheffield.ac.uk](mailto:j.goodall@sheffield.ac.uk) or [open an issue](https://github.com/jackwgoodall/floreytemplate/issues) on the GitHub page. 
 
 In homage to the original markdown tutorial I have used the cars dataset @mcneil1977interactive.
 
