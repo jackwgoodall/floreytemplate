@@ -1,4 +1,5 @@
-<script> document.addEventListener("DOMContentLoaded", function() {
+<script>
+document.addEventListener("DOMContentLoaded", function() {
     // Select all heading elements from h1 to h6
     var headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
 
@@ -8,8 +9,15 @@
         var previousLevel = parseInt(previousHeading.tagName.substring(1));
         var currentLevel = parseInt(currentHeading.tagName.substring(1));
 
-        // Check if previous heading is of the same or deeper level than the current heading
-        if (previousLevel >= currentLevel) {
+        // Find the element immediately preceding the current heading
+        var previousElement = currentHeading.previousElementSibling;
+        var escapePhrase = "<!-- no-divider -->";
+
+        // Check if the previous element contains the escape phrase
+        var containsNoDivider = previousElement && previousElement.nodeType === 8 && previousElement.nodeValue.includes("no-divider");
+
+        // Only add <hr> if previous heading is of the same or deeper level, and escape phrase is not found
+        if (previousLevel >= currentLevel && !containsNoDivider) {
             // Create the HR element
             var hr = document.createElement("hr");
             hr.classList.add("section-divider");

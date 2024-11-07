@@ -2104,6 +2104,8 @@ in the css file). <br></p>
 <p><code>&lt;hr style=&quot;border: 1px solid black; width: 100%; margin-top: 1em; margin-bottom: 1em;&quot;&gt;</code>
 makes:</p>
 <hr style="border: 1px solid black; width: 100%; margin-top: 1em; margin-bottom: 1em;">
+<p>(the ‘black’ here can be replaced by other colour names or hex codes
+to match you style)</p>
 <p>Better eh?</p>
 </div>
 <div id="spaces" class="section level2">
@@ -2458,7 +2460,8 @@ Analysis: A Practical Primer</a></em>. (Wiley, 1977).</div>
 </div>
 </div>
 
-<script> document.addEventListener("DOMContentLoaded", function() {
+<script>
+document.addEventListener("DOMContentLoaded", function() {
     // Select all heading elements from h1 to h6
     var headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
 
@@ -2468,8 +2471,15 @@ Analysis: A Practical Primer</a></em>. (Wiley, 1977).</div>
         var previousLevel = parseInt(previousHeading.tagName.substring(1));
         var currentLevel = parseInt(currentHeading.tagName.substring(1));
 
-        // Check if previous heading is of the same or deeper level than the current heading
-        if (previousLevel >= currentLevel) {
+        // Find the element immediately preceding the current heading
+        var previousElement = currentHeading.previousElementSibling;
+        var escapePhrase = "<!-- no-divider -->";
+
+        // Check if the previous element contains the escape phrase
+        var containsNoDivider = previousElement && previousElement.nodeType === 8 && previousElement.nodeValue.includes("no-divider");
+
+        // Only add <hr> if previous heading is of the same or deeper level, and escape phrase is not found
+        if (previousLevel >= currentLevel && !containsNoDivider) {
             // Create the HR element
             var hr = document.createElement("hr");
             hr.classList.add("section-divider");
