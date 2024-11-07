@@ -201,9 +201,9 @@ A dividing line can be placed with three or more astrixes (***) like this:
 
 Although a more convincing divide can be placed using some html code (done here to match the custom dividing lines I've put between sections in the css file). <br>
 
-`<hr style="border: 1px solid #450099; width: 100%; margin-top: 1em; margin-bottom: 1em;">` makes:
+`<hr style="border: 1px solid black; width: 100%; margin-top: 1em; margin-bottom: 1em;">` makes:
 
-<hr style="border: 1px solid #450099; width: 100%; margin-top: 1em; margin-bottom: 1em;">
+<hr style="border: 1px solid black; width: 100%; margin-top: 1em; margin-bottom: 1em;">
 
 Better eh?
 

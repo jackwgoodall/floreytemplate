@@ -1882,7 +1882,7 @@ border-radius: 0px;
 Institute</a> (although everyone is of course welcome to use and adapt
 it).</p>
 <p>The tutorial is aimed at people who are already familiar with R but
-are new to R Markdown. It aims to give those people both introduction to
+are new to R markdown. It aims to give those people both introduction to
 this powerful communication tool, and to give a flavour of how it might
 be used to communicate pre-publication research findings with colleague
 and collaborators.</p>
@@ -1911,7 +1911,9 @@ dataset<span class="citation"><sup><a href="#ref-mcneil1977interactive">1</a></s
 <h1>Install the template</h1>
 <ol style="list-style-type: decimal">
 <li><p>In the R console run:
-<code>if (!require(&quot;devtools&quot;, quietly = TRUE)) install.packages(&quot;devtools&quot;)</code></p></li>
+<code>if (!require(&quot;devtools&quot;, quietly = TRUE)) {</code>
+<code>install.packages(&quot;devtools&quot;)</code> <code>library(devtools)</code>
+<code>}</code></p></li>
 <li><p>Then run:<br />
 <code>devtools::install_github(&quot;jackwgoodall/floreytemplate&quot;)</code></p></li>
 <li><p>Open a new file and select R Markdown Document as the document
@@ -2099,9 +2101,9 @@ this:</p>
 <p>Although a more convincing divide can be placed using some html code
 (done here to match the custom dividing lines I’ve put between sections
 in the css file). <br></p>
-<p><code>&lt;hr style=&quot;border: 1px solid #450099; width: 100%; margin-top: 1em; margin-bottom: 1em;&quot;&gt;</code>
+<p><code>&lt;hr style=&quot;border: 1px solid black; width: 100%; margin-top: 1em; margin-bottom: 1em;&quot;&gt;</code>
 makes:</p>
-<hr style="border: 1px solid #450099; width: 100%; margin-top: 1em; margin-bottom: 1em;">
+<hr style="border: 1px solid black; width: 100%; margin-top: 1em; margin-bottom: 1em;">
 <p>Better eh?</p>
 </div>
 <div id="spaces" class="section level2">
