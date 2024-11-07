@@ -10,6 +10,10 @@ devtools::install_github("jackwgoodall/floreytemplate")
 
 ## Usage
 
-You can then open a new R markdown document, select 'From Template' then select 'Florey Template' and you're good to go!
+1. Open a new R markdown document
+2. Select 'From Template'
+3. Select'Florey Template'
+
+...and you're good to go!
 
 Please open an issue or email me (j.goodall@sheffield.ac.uk) with any issues or suggestions for improvements.
