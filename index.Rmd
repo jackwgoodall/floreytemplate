@@ -44,7 +44,10 @@ In homage to the original markdown tutorial I have used the cars dataset @mcneil
 # Install the template 
 
 1. In the R console run:
-`if (!require("devtools", quietly = TRUE)) install.packages("devtools")`
+`if (!require("devtools", quietly = TRUE)) {`
+  `install.packages("devtools")`
+  `library(devtools)`
+`}`
 
 2. Then run:  
 `devtools::install_github("jackwgoodall/floreytemplate")`
