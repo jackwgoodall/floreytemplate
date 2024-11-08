@@ -1870,7 +1870,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">Florey R Markdown Template Tutorial</h1>
 <h4 class="author">Jack Goodall</h4>
-<h4 class="date">Started 01-09-2024, last rendered 07-11-2024</h4>
+<h4 class="date">Started 01-09-2024, last rendered 08-11-2024</h4>
 
 </div>
 
@@ -1910,11 +1910,11 @@ dataset<span class="citation"><sup><a href="#ref-mcneil1977interactive">1</a></s
 <div id="install-the-template" class="section level1">
 <h1>Install the template</h1>
 <ol style="list-style-type: decimal">
-<li><p>In the R console run:
+<li><p>In the R console install the devlopers tools packages by running:
 <code>if (!require(&quot;devtools&quot;, quietly = TRUE)) {</code>
 <code>install.packages(&quot;devtools&quot;)</code> <code>library(devtools)</code>
 <code>}</code></p></li>
-<li><p>Then run:<br />
+<li><p>Then the install the template package with:<br />
 <code>devtools::install_github(&quot;jackwgoodall/floreytemplate&quot;)</code></p></li>
 <li><p>Open a new file and select R Markdown Document as the document
 type</p></li>
@@ -1961,21 +1961,25 @@ after the chunk that created it.</p>
 <h1>Chunks</h1>
 <div id="insert-a-chunk" class="section level3">
 <h3>Insert a chunk</h3>
-<p>Code chunks need to be framed by the ```{r} at the start and ``` at
-the end. This can either be done manually or with Code -&gt; Insert
-Chunk. After the ‘r’ you can add a name for the chunk. This makes it
-easier to find specific chunks later as these names will appear at the
-bottom left of the editor.</p>
+<p>All executable code in markdown needs to be contained within code
+chunks.</p>
+<p>These chunks are framed by the <code>```{r}</code> at the start and
+<code>```</code> at the end.</p>
+<p>This can either be done manually or with Code -&gt; Insert Chunk.</p>
+<p>After the ‘r’ you can add a name for the chunk (eg
+<code>```{r chunk_one}</code>). This makes it easier to find specific
+chunks later as these names will appear at the bottom left of the
+editor.</p>
 </div>
 <div id="set-the-global-options" class="section level3">
 <h3>Set the global options</h3>
 <p>You could choose how you want each chunk to behave one-by-one in the
 heading.</p>
-<p>e.g. ```{r chunk one, echo = FALSE} would tell R that you don’t want
-the code for this particular chunk to be shown.</p>
+<p>e.g. <code>```{r chunk_one, echo = FALSE}</code> would tell R that
+you don’t want the code for this particular chunk to be shown.</p>
 <p>Much easier though is to set the global options with
 knitr::opts_chunk$set like this:</p>
-<pre class="r"><code>knitr::opts_chunk$set(echo = TRUE, warning = FALSE)</code></pre>
+<pre class="r"><code>knitr::opts_chunk$set(echo = TRUE, warning = FALSE, messages = FALSE)</code></pre>
 <p>Click the ‘Show’ button here to see the settings for this document
 —-&gt;</p>
 <p>I have selected:</p>
@@ -2442,6 +2446,40 @@ content and dividing lines to match your logo. <a href="https://imagecolorpicker
 hex colour codes from an image you upload and might be helpful.</p>
 </div>
 </div>
+</div>
+<div id="the-yaml" class="section level1">
+<h1>The YAML</h1>
+<p>Many of the YAML options have been explained already but this is a
+summary of all of the options I have added for this template with an
+explanation of what they do.<br />
+Unlike markdown, YAML is space sensitive and the indentations need to be
+maintained, with child lines indented relative to the parent lines - you
+can see this below:</p>
+<p><br></p>
+<p><code>title: &quot;Florey R Markdown Template Tutorial&quot;</code> &lt;——–
+adds a title <br> <code>author: &quot;Jack Goodall&quot;</code> &lt;——– adds your
+name at the start <br>
+<code>date: &quot;Started 01-09-2024, last rendered 08-11-2024&quot;</code> &lt;–
+adds the date rendered in UK format <br> <code>output:</code> <br>  
+<code>html_document:</code> &lt;——– tells the knit engine to turn this
+into html <br>     <code>css: setup/style.css</code> &lt;——– links to
+the custom css file <br>     <code>includes:</code> <br>      
+<code>after_body: setup/footer.html</code> &lt;—— adds the html footer
+(this is for the <a href="#html-footer">line break</a>) <br>    
+<code>code_folding: hide</code> &lt;——- ensures the code chunks are
+printed but hides them by default <br>     <code>toc: true</code>
+&lt;——– adds a table of content <br>     <code>toc_float:</code> &lt;——–
+makes it float <br>       <code>collapsed: true</code> &lt;——– collapses
+the subheadings <br>       <code>smooth_scroll:</code> true &lt;——–
+smoothes the transitions <br>     <code>toc_depth:</code> 4 &lt;——–
+takes the heading down to level 4 (i.e. headings # top ####) <br>
+<code>bibliography: references.bibtex</code> &lt;——– adds a bibiography
+and points to the references filev <code>csl: skeleton/nature.csl</code>
+&lt;——– changes the referencing style to nature <br>
+<code>link-citations: true</code> &lt;——– hyperlinks citations to the
+references <br> <code>editor_options:</code> <br>  
+<code>chunk_output_type: console</code> &lt;——– sends code chunks to the
+‘viewer’ rather than inline when editing <br></p>
 </div>
 <div id="conclusions" class="section level1">
 <h1>Conclusions</h1>

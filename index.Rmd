@@ -18,7 +18,6 @@ csl: inst/rmarkdown/templates/florey-template/skeleton/nature.csl
 link-citations: true
 editor_options:
   chunk_output_type: console
-zotero: true
 ---
 
 # Overview
@@ -43,13 +42,13 @@ In homage to the original markdown tutorial I have used the cars dataset @mcneil
 
 # Install the template 
 
-1. In the R console run:
+1. In the R console install the devlopers tools packages by running:
 `if (!require("devtools", quietly = TRUE)) {`
   `install.packages("devtools")`
   `library(devtools)`
 `}`
 
-2. Then run:  
+2. Then the install the template package with:  
 `devtools::install_github("jackwgoodall/floreytemplate")`
 
 3. Open a new file and select R Markdown Document as the document type
@@ -82,20 +81,24 @@ The options open to you are shown in the [headings](#headings) and [formatting](
 
 ### Insert a chunk 
 
-Code chunks need to be framed by the \```{r} at the start and \``` at the end. 
+All executable code in markdown needs to be contained within code chunks.
+
+These chunks are framed by the ```` ```{r}```` at the start and ` ``` ` at the end. 
+
 This can either be done manually or with Code -> Insert Chunk.
-After the 'r' you can add a name for the chunk.  This makes it easier to find specific chunks later as these names will appear at the bottom left of the editor. 
+
+After the 'r' you can add a name for the chunk (eg ```` ```{r chunk_one}````).  This makes it easier to find specific chunks later as these names will appear at the bottom left of the editor. 
 
 ### Set the global options 
 
 You could choose how you want each chunk to behave one-by-one in the heading. 
 
-e.g. \```{r chunk one, echo = FALSE} would tell R that you don't want the code for this particular chunk to be shown.
+e.g. ```` ```{r chunk_one, echo = FALSE}```` would tell R that you don't want the code for this particular chunk to be shown.
 
 Much easier though is to set the global options with knitr::opts_chunk$set like this: 
 
 ```{r setup}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, messages = FALSE)
 ```
 
 
@@ -397,6 +400,33 @@ Copy the string that this creates into the relevant part of the css file and you
 
 You may want to change the highlights I have chosen for the table of content and dividing lines to match your logo.  [This website](https://imagecolorpicker.com/) lets you find the hex colour codes from an image you upload and might be helpful.
 
+# The YAML 
+
+Many of the YAML options have been explained already but this is a summary of all of the options I have added for this template with an explanation of what they do.  
+Unlike markdown, YAML is space sensitive and the indentations need to be maintained, with child lines indented relative to the parent lines - you can see this below:
+
+<br>
+
+`title: "Florey R Markdown Template Tutorial"` <-------- adds a title <br>
+`author: "Jack Goodall"`                        <-------- adds your name at the start <br>
+``date: "Started 01-09-2024, last rendered `r format(Sys.Date(), '%d-%m-%Y')`"`` <-- adds the date rendered in UK format <br>
+`output:` <br>
+&nbsp; `html_document:`     <-------- tells the knit engine to turn this into html <br>
+&nbsp; &nbsp;    `css: setup/style.css` <-------- links to the custom css file <br>
+&nbsp; &nbsp;    `includes:` <br>
+&nbsp; &nbsp; &nbsp;     `after_body: setup/footer.html` <------ adds the html footer (this is for the [line break](#html-footer)) <br>
+&nbsp; &nbsp;    `code_folding: hide` <------- ensures the code chunks are printed but hides them by default <br>
+&nbsp; &nbsp;    `toc: true` <-------- adds a table of content <br>
+&nbsp; &nbsp;    `toc_float:` <-------- makes it float <br>
+&nbsp; &nbsp; &nbsp;      `collapsed: true` <-------- collapses the subheadings  <br>
+&nbsp; &nbsp; &nbsp;      `smooth_scroll:` true <-------- smoothes the transitions <br>
+&nbsp; &nbsp;    `toc_depth:` 4 <-------- takes the heading down to level 4 (i.e. headings # top ####) <br>
+`bibliography: references.bibtex` <-------- adds a bibiography and points to the references filev
+`csl: skeleton/nature.csl` <-------- changes the referencing style to nature  <br>
+`link-citations: true` <-------- hyperlinks citations to the references <br>
+`editor_options:` <br>
+ &nbsp; `chunk_output_type: console` <-------- sends code chunks to the 'viewer' rather than inline when editing <br>
+  
 # Conclusions
 
 I hope this markdown tutorial has been useful.  I would love to hear your feedback (good and bad!) either by email (j.goodall@sheffield.ac.uk) or by opening an issue on the [package page](https://github.com/jackwgoodall/floreytemplate/issues). 
