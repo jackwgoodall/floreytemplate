@@ -1,4 +1,4 @@
 name: STH-lab-med
 description: >
    A template to use for STH lab med projects
-create_dir: TRUE
+create_dir: false
