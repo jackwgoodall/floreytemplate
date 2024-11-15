@@ -4,9 +4,9 @@ author: "Your Name"
 date: "Started --Add Date--, last rendered `r format(Sys.Date(), '%d-%m-%Y')`"
 output:
   html_document:
-    css: setup/style.css
+    css: style.css
     includes:
-      after_body: setup/footer.html
+      after_body: footer.html
     code_folding: hide
     toc: true
     toc_float:
