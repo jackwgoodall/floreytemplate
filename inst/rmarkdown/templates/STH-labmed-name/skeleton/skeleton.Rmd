@@ -33,3 +33,8 @@ if (!require("pacman", quietly = TRUE))
     install.packages("pacman")
 pacman::p_load(ggplot2, tidyverse, kableExtra)
 ```
+
+```{r set working directory, include=FALSE}
+# As this creates a subfolder this tells the knit to look in your main directory for files
+knitr::opts_knit$set(root.dir = here::here())
+```

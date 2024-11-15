@@ -6,14 +6,14 @@ output:
   html_document:
     css: style.css
     includes:
-      after_body: footer.html
+      after_body: setup/footer.html
     code_folding: hide
     toc: true
     toc_float:
       collapsed: true
       smooth_scroll: true
     toc_depth: 4
-bibliography: references.bibtex
+bibliography: setup/references.bibtex
 csl: nature.csl
 link-citations: true
 editor_options:
@@ -32,4 +32,9 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 if (!require("pacman", quietly = TRUE))
     install.packages("pacman")
 pacman::p_load(ggplot2, tidyverse, kableExtra)
+```
+
+```{r set working directory, include=FALSE}
+# As this creates a subfolder this tells the knit to look in your main directory for files
+knitr::opts_knit$set(root.dir = here::here())
 ```
