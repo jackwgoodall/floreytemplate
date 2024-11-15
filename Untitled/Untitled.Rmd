@@ -1,7 +1,7 @@
 ---
 title: "Florey R Markdown Template Example"
 author: "Your Name"
-date: "Started --Add Date--, rendered `r format(Sys.Date(), '%d-%m-%Y')`"
+date: "Started --Add Date--, last rendered `r format(Sys.Date(), '%d-%m-%Y')`"
 output:
   html_document:
     css: setup/style.css
@@ -20,18 +20,16 @@ editor_options:
   chunk_output_type: console
 ---
 
+This is an R Markdown template for Sheffield's Florey Institute.  However I hope that some of it will be of wider use.
+
+There is a tutorial on how to use and adapt this template at https://jackwgoodall.github.io/floreytemplate/
+
 ```{r setup}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
-## Adding an RMarkdown Template
-
-This file is what a user will see when they select your template. Make sure that you update the fields in the yaml header. In particular you will want to update the `output` field to whatever format your template requires.
-
-This is a good place to demonstrate special features that your template provides. Ideally it should knit out-of-the-box, or at least contain clear instructions as to what needs changing.
-
-Finally, be sure to remove this message!
-
-### Test
-
-## test
+```{r packages}
+if (!require("pacman", quietly = TRUE))
+    install.packages("pacman")
+pacman::p_load(ggplot2, tidyverse, kableExtra)
+```

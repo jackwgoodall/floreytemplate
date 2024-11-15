@@ -1,2 +1,3 @@
+create_dir: false
 name: Florey Template
 description: A template for making visually appealing R markdown templates for Sheffield Universitys' Florey Institute (and anyone else)
