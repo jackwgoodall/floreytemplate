@@ -4,7 +4,7 @@ author: "Your Name"
 date: "Started --Add Date--, last rendered `r format(Sys.Date(), '%d-%m-%Y')`"
 output:
   html_document:
-    css: style.css
+    css: setup/style.css
     includes:
       after_body: setup/footer.html
     code_folding: hide
@@ -13,7 +13,7 @@ output:
       collapsed: true
       smooth_scroll: true
     toc_depth: 4
-bibliography: setup/references.bibtex
+bibliography: references.bibtex
 csl: nature.csl
 link-citations: true
 editor_options:
