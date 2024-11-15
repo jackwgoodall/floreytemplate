@@ -1,6 +1,6 @@
 name: Florey Template
 description: >
    A template for making visually appealing R markdown templates for Sheffield Universitys' Florey Institute (and anyone else)
-create_dir: FALSE
+create_dir: false
 skeleton:
   file: skeleton/skeleton.Rmd
