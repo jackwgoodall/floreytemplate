@@ -26,13 +26,25 @@ There is a tutorial on how to use and adapt this template at https://jackwgoodal
 
 ```{r setup}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
-options(scipen = 999, digits = 2)  # Turn off scientific notation
+options(scipen = 999, digits = 2)  # Turn off scientific notation, rounds numbers to 2 decimal places 
 ```
 
 ```{r packages}
 if (!require("pacman", quietly = TRUE))
     install.packages("pacman")
 pacman::p_load(ggplot2, tidyverse, kableExtra)
+```
+
+```{r ggplot global theme}
+# Set global ggplot theme
+theme_set(
+  theme_minimal() +
+    theme(
+      panel.grid.major = element_blank(), # Remove the large grid lines
+      panel.grid.minor = element_blank(), # Remove the small grid lines
+      panel.background = element_blank(), # Remove the back ground
+      axis.line = element_line(colour = "black") # Add a more solid axis line
+    ))
 ```
 
 ```{r set working directory, include=FALSE}

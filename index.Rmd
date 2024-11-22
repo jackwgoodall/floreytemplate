@@ -140,13 +140,27 @@ I have gone for the default approach of hard coding pacman to be installed and t
 
 I think ggplot2, tidyverse and kable_extra (see why kableExtra [later](#tables)) are all pretty much essentials but you can change these to suit.
 
+I have also set a global ggplot theme - which is discussed in the [plot themes](#plot-themes) section
+
 
 ```{r packages}
 if (!require("pacman", quietly = TRUE))
     install.packages("pacman")
 pacman::p_load(ggplot2, tidyverse, kableExtra)
 ```
- 
+
+```{r ggplot global theme}
+# Set global ggplot theme
+theme_set(
+  theme_minimal() +
+    theme(
+      panel.grid.major = element_blank(), # Remove the large grid lines
+      panel.grid.minor = element_blank(), # Remove the small grid lines
+      panel.background = element_blank(), # Remove the back ground
+      axis.line = element_line(colour = "black") # Add a more solid axis line
+    ))
+```
+
 # Formatting
 
 You can easily create headings using increasing numbers of hashtags (#). The more hashtags the smaller the heading.
@@ -295,9 +309,13 @@ plot +
              shape = 17)  # Adjusting shape
 ```
 
-# Plot size
+# Plots
 
-The plotsize can be specified with `fig.dim = c(x, y)` where x is the width and y is the height of the image. 
+## Absolute plot size
+
+The plotsize can be specified with `fig.dim = c(x, y)` where x is the width and y is the height of the image.  
+
+e.g. 2x3
 
 ```{r fig.dim = c(2, 3)}
 plot +  
@@ -306,9 +324,11 @@ plot +
              shape = 17)  # Adjusting shape
 ```
 
-<br>
-How much of the markdown space the plot occupies can be set with `out.width = "X%"` and `out.height="X%"`: 
+## Relative plot size
 
+How much of the markdown space the plot occupies can be set with `out.width = "X%"` and `out.height="X%"`.
+
+e.g. 50%
 
 ```{r out.width = "50%"}
 plot +  
@@ -316,8 +336,6 @@ plot +
              size = 4,   # Adjusting size
              shape = 17)  # Adjusting shape
 ```
-
-<br>
 
 ## Side-by-side
 
@@ -340,6 +358,44 @@ plot +
              shape = 17) + # Adjusting shape
 labs(title = "Figure 2")
 ```
+
+## Plot themes
+
+As with ggplot in R you can change the ggplot themes (*theme_minimal()* is very popular).
+
+I have set a global ggplot theme which is applied to all the plots at the top of the markdown using ggplots' ***theme_set***:
+
+`theme_set(` <br>
+&nbsp;  `theme_minimal() +` <br>
+&nbsp;&nbsp;&nbsp; `theme(` <br>
+&nbsp;&nbsp;&nbsp; `panel.grid.major = element_blank(),` # Remove the large grid lines <br>
+&nbsp;&nbsp;&nbsp; `panel.grid.minor = element_blank(),` # Remove the small grid lines <br>
+&nbsp;&nbsp;&nbsp; `panel.background = element_blank(),` # Remove the back ground <br>
+&nbsp;&nbsp; `axis.line = element_line(colour = "black")` # Add a more solid axis line <br>
+&nbsp; `))` <br>
+
+This then applies this theme unless you specify another one.  It means that plots look like:
+
+```{r out.width = "50%", fig.show='hold'}
+plot +  
+  geom_point(color = "#c21033", # Adjusting colour using hex colours 
+             size = 4,   # Adjusting size
+             shape = 17) + # Adjusting shape
+  ggtitle("This...") + 
+  theme(
+       plot.title = element_text(size=24))
+
+plot +  
+  geom_point(color = "#c21033", # Adjusting colour using hex colours 
+             size = 4,   # Adjusting size
+             shape = 17) + # Adjusting shape
+  ggtitle("...rather than this") + 
+    theme_grey() + 
+  theme(
+      plot.title = element_text(size=24))
+
+```
+
 
 # Add references
 
