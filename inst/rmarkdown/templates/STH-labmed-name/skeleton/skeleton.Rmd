@@ -26,6 +26,7 @@ There is a tutorial on how to use and adapt this template at https://jackwgoodal
 
 ```{r setup}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+options(scipen = 999, digits = 2)  # Turn off scientific notation, rounds numbers to 2 decimal places 
 ```
 
 ```{r packages}
