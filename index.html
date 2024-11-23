@@ -1871,70 +1871,70 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">Florey R Markdown Template Tutorial</h1>
 <h4 class="author">Jack Goodall</h4>
-<h4 class="date">Started 01-09-2024, last rendered 22-11-2024</h4>
+<h4 class="date">Started 01-09-2024, last rendered 23-11-2024</h4>
 
 </div>
 
 
 <div id="overview" class="section level1">
 <h1>Overview</h1>
-<p>This is a tutorial on the Rmarkdown template for Sheffield’s <a href="https://www.sheffield.ac.uk/florey-institute">Florey Institute</a>
-(although everyone is of course welcome to use and adapt it).</p>
+<p>This is a tutorial on R markdown and how to use Sheffield’s <a href="https://www.sheffield.ac.uk/florey-institute">Florey
+Institute’s</a> markdown template.</p>
+<p>Although it is aimed at Florey Institute members I hope that it will
+be of broader interest, and anyone is welcome to use and adapt it. The
+final section discusses how you adapt the branding to your
+institution.</p>
 <p>This page has three aims:</p>
 <ol style="list-style-type: decimal">
-<li>To give a demonstration of what the Florey Template finished product
-looks like</li>
+<li>To show what the Florey template looks like knitted</li>
 <li>To explain how to install, use and customise the template</li>
 <li>To provide a tutorial on how to use R Markdown for people who are
-familiar R but are new to markdown</li>
+familiar R but new to markdown</li>
 </ol>
-<p>For those of you who are new to markdown, I hope to convert you to
-this powerful communication tool, and this tutorial will demonstrate how
-markdown might be used to communicate pre-publication research findings
-with colleague and collaborators.</p>
-<p>This webpage was written with R Markdown using the Florey Template.
-The code used to make it can be found on my GitHub <a href="https://github.com/jackwgoodall/floreytemplate/blob/main/index.Rmd">here</a>.
+<p>If you are new to markdown, I hope to convert you to this powerful
+communication tool. This page will demonstrate how it can be used to
+easily communicate pre-publication research findings with colleague and
+collaborators.</p>
+<p>This page was written with R Markdown using the Florey Template. The
+code used to make it can be found on my GitHub <a href="https://github.com/jackwgoodall/floreytemplate/blob/main/index.Rmd">here</a>.
 It might be useful to look at this in conjunction with this webpage to
 see how it has been put together, although this shouldn’t be necessary
 to understand it.</p>
-<p>If you are experienced already with markdown then the section <a href="#install-the-template">‘installing the template’</a> will be all
-you need to get the Florey branding and general template. However the <a href="#custom-css">custom CSS</a> section later on might be of interest,
-as this explains how to customise the page, including how to customise
-the logo and section breaks.</p>
-<p>If you are new to markdown then I suggest following this document
-through in order.</p>
-<p>If you need more detail or want to understand how to use markdowjn to
+<p>If you are already experienced with markdown then the section <a href="#installing-the-template">‘Installing the template’</a> will be
+all you need to get going. However, the <a href="#custom-css">custom
+CSS</a> section later on might be of interest, as this explains how to
+customise the logo and section breaks.</p>
+<p>If you are new to markdown then I suggest following this page through
+in order.</p>
+<p>If you need more detail or want to understand how to use markdown to
 create PDFs, Word documents or Shiny webpages I would highly recommend
 <a href="https://bookdown.org/yihui/rmarkdown-cookbook/">the R Markdown
 Cookbook</a>.</p>
+<p>In homage to the original markdown tutorial I have used the cars
+dataset<span class="citation"><sup><a href="#ref-mcneil1977interactive">1</a></sup></span>.</p>
 <p>If you have any questions, suggestions for improvements or would like
 to edit the project please either <a href="mailto:j.goodall@sheffield.ac.uk">email
 j.goodall@sheffield.ac.uk</a> or <a href="https://github.com/jackwgoodall/floreytemplate/issues">open an
 issue</a> on the GitHub page.</p>
-<p>In homage to the original markdown tutorial I have used the cars
-dataset<span class="citation"><sup><a href="#ref-mcneil1977interactive">1</a></sup></span>.</p>
 </div>
-<div id="install-the-template" class="section level1">
-<h1>Install the template</h1>
+<div id="installing-the-template" class="section level1">
+<h1>Installing the template</h1>
 <ol style="list-style-type: decimal">
-<li><p>In the R console install the devlopers tools packages by running:
-<code>if (!require(&quot;devtools&quot;, quietly = TRUE)) {</code>
+<li><p>In the R console install the devlopers’ tools packages by
+running: <code>if (!require(&quot;devtools&quot;, quietly = TRUE)) {</code>
 <code>install.packages(&quot;devtools&quot;)</code> <code>library(devtools)</code>
 <code>}</code></p></li>
-<li><p>Then the install the template package with:<br />
+<li><p>Then install the template package with:<br />
 <code>devtools::install_github(&quot;jackwgoodall/floreytemplate&quot;)</code></p></li>
 <li><p>Open a new file and select R Markdown Document as the document
 type</p></li>
 <li><p>On the left of the window select ‘From Template’</p></li>
-<li><p>Select ‘Florey Template’</p></li>
+<li><p>Select ‘Florey Template’ and give it an appropriate name</p></li>
 <li><p>This should give you a minimal markdown document</p></li>
 <li><p>Press the ‘Knit’ button at the top of the screen</p></li>
 <li><p>If all has gone to plan an html file with the Florey logo and
 some intro text should appear</p></li>
 </ol>
-<p>This might be all you need to get going, otherwise having the <a href="https://github.com/jackwgoodall/floreytemplate/blob/main/example_markdown.Rmd">source
-code</a> to cross reference as you read through the webpage should help
-you understand how it was all put together.</p>
 </div>
 <div id="anatomy-of-a-markdown" class="section level1">
 <h1>Anatomy of a Markdown</h1>
@@ -1947,22 +1947,24 @@ you understand how it was all put together.</p>
 <p>The <strong>YAML heading</strong> (‘<strong>Y</strong>AML
 <strong>A</strong>in’t <strong>M</strong>arkup
 <strong>L</strong>anguage’ - recursive acroynms seem to be big in coding
-circles) tells R studio how to knit the document. The only essential
-thing here is the <code>output:</code> option. I would strongly suggest
-html for almost all tasks (although both PDF and word have their uses).
-However, there is much more that can be done with the YAML heading to
-make markdown more accessible, as you will see. <br></p>
+circles) tells R studio how to knit the document (<em>knitting is the
+process of turning you markdown document into a human-readable form such
+as html</em>).</p>
+<p>The only essential thing for the YAML is the <code>output:</code>
+option. I would strongly suggest html for almost all tasks (although
+both PDF and Word documents have their uses).</p>
+<p>However, there is much more that can be done with the YAML heading to
+make your markdown documents more accessible, as you will see. <br></p>
 <p><strong>Formatted text</strong> is really what makes markdown so
-great for sharing your pre-publication work with colleagues and
-collaborators. This lets you add a narrative around the data you want to
-present.</p>
+great for sharing your pre-publication work with colleagues as this lets
+you add a narrative around the data you want to present.</p>
 <p>The options open to you are shown in the <a href="#headings">headings</a> and <a href="#formatting">formatting</a>
 sections. <br></p>
 <p><strong>Code chunks</strong> are sections of R code that are either
 just setting things up or are producing an output that we want to show.
 Code within these chunks operates pretty much the same as it does within
-‘normal’ R - but anything that would normally to the console appears
-after the chunk that created it.</p>
+‘normal’ R - but plots or any text that would normally go to the console
+appears after the chunk that created it.</p>
 </div>
 <div id="chunks" class="section level1">
 <h1>Chunks</h1>
@@ -1970,7 +1972,7 @@ after the chunk that created it.</p>
 <h3>Insert a chunk</h3>
 <p>All executable code in markdown needs to be contained within code
 chunks.</p>
-<p>These chunks are framed by the <code>```{r}</code> at the start and
+<p>These chunks are framed by <code>```{r}</code> at the start and
 <code>```</code> at the end.</p>
 <p>This can either be done manually or with Code -&gt; Insert Chunk.</p>
 <p>After the ‘r’ you can add a name for the chunk (eg
@@ -2021,12 +2023,13 @@ one you could set the global options to <code>echo = TRUE</code> and
 that chunk’s options to <code>echo = FALSE</code>.</p>
 <p>Another useful thing to get your head around if you will be making
 documents with large data processing is caching. That is beyond the
-scope of this intro but a good intro can be found <a href="https://bookdown.org/yihui/rmarkdown-cookbook/cache.html">here</a></p>
+scope of this page but a good introduction can be found <a href="https://bookdown.org/yihui/rmarkdown-cookbook/cache.html">here</a></p>
 </div>
 <div id="packages" class="section level3">
 <h3>Packages</h3>
 <p>You will need some packages. If these are used for the knit they need
-to be explicitly loaded.</p>
+to be explicitly loaded in the markdown document (not just loaded into
+your general environment).</p>
 <p>I have gone for the default approach of hard coding pacman to be
 installed and then using this to install everything else.</p>
 <p>I think ggplot2, tidyverse and kable_extra (see why kableExtra <a href="#tables">later</a>) are all pretty much essentials but you can
@@ -2545,29 +2548,29 @@ Unlike markdown, YAML is space sensitive and the indentations need to be
 maintained, with child lines indented relative to the parent lines - you
 can see this below:</p>
 <p><br></p>
-<p><code>title: &quot;Florey R Markdown Template Tutorial&quot;</code> &lt;——–
-adds a title <br> <code>author: &quot;Jack Goodall&quot;</code> &lt;——– adds your
-name at the start <br>
-<code>date: &quot;Started 01-09-2024, last rendered 22-11-2024&quot;</code> &lt;–
+<p><code>title: &quot;Florey R Markdown Template Tutorial&quot;</code> ## adds a
+title <br> <code>author: &quot;Jack Goodall&quot;</code> ## adds your name at the
+start <br>
+<code>date: &quot;Started 01-09-2024, last rendered 23-11-2024&quot;</code> ##
 adds the date rendered in UK format <br> <code>output:</code> <br>  
-<code>html_document:</code> &lt;——– tells the knit engine to turn this
-into html <br>     <code>css: setup/style.css</code> &lt;——– links to
-the custom css file <br>     <code>includes:</code> <br>      
-<code>after_body: setup/footer.html</code> &lt;—— adds the html footer
-(this is for the <a href="#html-footer">line break</a>) <br>    
-<code>code_folding: hide</code> &lt;——- ensures the code chunks are
-printed but hides them by default <br>     <code>toc: true</code>
-&lt;——– adds a table of content <br>     <code>toc_float:</code> &lt;——–
-makes it float <br>       <code>collapsed: true</code> &lt;——– collapses
-the subheadings <br>       <code>smooth_scroll:</code> true &lt;——–
-smoothes the transitions <br>     <code>toc_depth:</code> 4 &lt;——–
-takes the heading down to level 4 (i.e. headings # top ####) <br>
-<code>bibliography: references.bibtex</code> &lt;——– adds a bibiography
-and points to the references filev <code>csl: skeleton/nature.csl</code>
-&lt;——– changes the referencing style to nature <br>
-<code>link-citations: true</code> &lt;——– hyperlinks citations to the
+<code>html_document:</code> ## tells the knit engine to turn this into
+html <br>     <code>css: setup/style.css</code> ## links to the custom
+css file <br>     <code>includes:</code> <br>      
+<code>after_body: setup/footer.html</code> ## adds the html footer (this
+is for the <a href="#html-footer">line break</a>) <br>    
+<code>code_folding: hide</code> ## ensures the code chunks are printed
+but hides them by default <br>     <code>toc: true</code> ## adds a
+table of content <br>     <code>toc_float:</code> ## makes it float <br>
+      <code>collapsed: true</code> ## collapses the subheadings <br>    
+  <code>smooth_scroll: true</code> ## smoothes the transitions <br>    
+<code>toc_depth: 4</code> ## takes the heading down to level 4
+(i.e. headings # top ####) <br>
+<code>bibliography: references.bibtex</code> ## adds a bibiography and
+points to the references filev <code>csl: skeleton/nature.csl</code> ##
+changes the referencing style to nature <br>
+<code>link-citations: true</code> ## hyperlinks citations to the
 references <br> <code>editor_options:</code> <br>  
-<code>chunk_output_type: console</code> &lt;——– sends code chunks to the
+<code>chunk_output_type: console</code> ## sends code chunks to the
 ‘viewer’ rather than inline when editing <br></p>
 </div>
 <div id="conclusions" class="section level1">
