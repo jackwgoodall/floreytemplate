@@ -24,7 +24,7 @@ editor_options:
 
 This is a tutorial on R markdown and how to use Sheffield's [Florey Institute's](https://www.sheffield.ac.uk/florey-institute) markdown template.
 
-Although it is aimed at Florey Institute members I hope that it will be of broader interest, and anyone is welcome to use and adapt it.  The final section discusses how you adapt the branding to your institution. 
+Although it is aimed at Florey Institute members I hope that it will be of broader interest, and anyone is welcome to use and adapt it.  The [penultimate section](#custom-css-and-html) shows how to change the branding to another institution. 
 
 
 This page has three aims:
@@ -33,7 +33,7 @@ This page has three aims:
   2. To explain how to install, use and customise the template
   3. To provide a tutorial on how to use R Markdown for people who are familiar R but new to markdown
   
-If you are new to markdown, I hope to convert you to this powerful communication tool.  This page will demonstrate how it can be used to easily communicate pre-publication research findings with colleague and collaborators.  
+If you are new to markdown, I also aim to convert you to this powerful communication tool.  This page will demonstrate how it could be used to easily communicate pre-publication research findings with colleague and collaborators.  
 
 This page was written with R Markdown using the Florey Template.  The code used to make it can be found on my GitHub [here](https://github.com/jackwgoodall/floreytemplate/blob/main/index.Rmd).  It might be useful to look at this in conjunction with this webpage to see how it has been put together, although this shouldn't be necessary to understand it.
 
